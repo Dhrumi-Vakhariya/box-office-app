@@ -1,28 +1,41 @@
 import React, { useState } from "react";
 import MainLayout from "../components/MainLayout";
+import { apiGet } from "../misc/config";
 
 const Home = () => {
-  const [input, setinput] = useState("");
+  const [input, setInput] = useState("");
+  const [results, setResults] = useState(null);
 
   const onInputChange = ev => {
-    setinput(ev.target.value);
+    setInput(ev.target.value);
   };
 
   const onSearch = () => {
-    // https://api.tvmaze.com/search/shows?q=girls
-
-    fetch(`https://api.tvmaze.com/search/shows?q=${input}`).then(res =>
-      res.json().then(result => {
-        console.log("first", result);
-      })
-    );
+    apiGet(`/search/shows?q=${input}`).then(result => {
+      setResults(result);
+    });
   };
 
   const onKeyDown = ev => {
-    console.log("not 13");
     if (ev.keyCode === 13) {
       onSearch();
     }
+  };
+
+  const renderResults = () => {
+    if (results && results.length === 0) {
+      return <div>No record found!</div>;
+    }
+    if (results && results.length > 0) {
+      return (
+        <div>
+          {results.map(item => (
+            <div key={item.show.id}>{item.show.name}</div>
+          ))}
+        </div>
+      );
+    }
+    return null;
   };
 
   return (
@@ -36,6 +49,7 @@ const Home = () => {
       <button type="button" onClick={onSearch}>
         Search
       </button>
+      {renderResults()}
     </MainLayout>
   );
 };
