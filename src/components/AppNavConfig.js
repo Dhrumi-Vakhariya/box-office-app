@@ -5,11 +5,11 @@ const AppNavConfig = () => {
   const LINKS = [
     {
       path: "/",
-      title: "Home Page",
+      title: "Home",
     },
     {
       path: "/starred",
-      title: "Starred Page",
+      title: "Favourites",
     },
   ];
   return (
