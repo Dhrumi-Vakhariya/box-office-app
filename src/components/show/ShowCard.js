@@ -17,11 +17,9 @@ const ShowCard = ({ id, image, name, summary }) => {
 
       <p>{summaryAsText}</p>
 
-      <div>
+      <div className="btns">
         <Link to={`/show/${id}`}>Read more</Link>
-        <button type="button" className="btns">
-          Star me
-        </button>
+        <button type="button">Star me</button>
       </div>
     </StyledShowCard>
   );
