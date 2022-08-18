@@ -1,4 +1,9 @@
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import {
+  // BrowserRouter,
+  HashRouter,
+  Route,
+  Switch,
+} from "react-router-dom";
 import Home from "./pages/Home";
 import Starred from "./pages/Starred";
 import Show from "./pages/Show";
@@ -14,7 +19,8 @@ const theme = {
 
 function App() {
   return (
-    <BrowserRouter>
+    // <BrowserRouter>
+    <HashRouter>
       <ThemeProvider theme={theme}>
         <Switch>
           <Route exact path="/">
@@ -29,7 +35,8 @@ function App() {
           <Route>Sorry, the page you visited does not exist.</Route>
         </Switch>
       </ThemeProvider>
-    </BrowserRouter>
+    </HashRouter>
+    // </BrowserRouter>
   );
 }
 
