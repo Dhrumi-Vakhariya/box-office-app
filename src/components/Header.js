@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { TitleWrapper } from "../misc/styled";
 
 const Header = ({ title, subtitle }) => {
@@ -10,4 +10,4 @@ const Header = ({ title, subtitle }) => {
   );
 };
 
-export default Header;
+export default memo(Header);
